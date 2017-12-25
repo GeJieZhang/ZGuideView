@@ -23,7 +23,7 @@ import java.util.Map;
 public class ParallaxViewPager extends ViewPager {
     private List<ParallaxFragment> mFragments;
 
-    private List<Integer>mId;
+    private List<Integer> mId;
 
     private OnFragmentClickListener onFragmentClickListener;
 
@@ -38,7 +38,7 @@ public class ParallaxViewPager extends ViewPager {
         super(context, attrs);
         mFragments = new ArrayList<>();
         mViews = new HashMap<>();
-        mId=new ArrayList<>();
+        mId = new ArrayList<>();
 
     }
 
@@ -79,7 +79,10 @@ public class ParallaxViewPager extends ViewPager {
 
                 mViews.put(mId.get(position), outFragment.getView());
                 Log.e("=======id", "" + outFragment.getId());
-                onFragmentClickListener.getVieMap(mViews);
+                if (onFragmentClickListener != null) {
+                    onFragmentClickListener.getVieMap(mViews);
+                }
+
 
                 List<View> parallaxViews = outFragment.getParallaxViews();
                 for (View parallaxView : parallaxViews) {
